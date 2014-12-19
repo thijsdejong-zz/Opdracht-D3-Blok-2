@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Opdracht D3</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lib/c3.css">
+</head>
+<body>
+<center>
+    <br>
+	<h1>Aantal studenten per gemeente</h1>
+    <h2>Relatief naar populatie</h2>
+    <p>Bron: <a href="http://statline.cbs.nl/">CBS Leerlingen, deelnemers en studenten; onderwijssoort, woonregio</a> (Bewerkt)</p>
+
+	<button id="VO">Voortgezet Onderwijs</button>
+    <button id="MBO">Middelbaar Beroeps Onderwijs</button>
+    <button id="HBO">Hoger Beroeps Onderwijs</button>
+    <button id="WO">Wetenschappelijk Onderwijs</button>
+
+     <div id="kaart">
+        <div class="map"></div>
+    </div>
+        
+    <hr><br>
+    
+    <h1>Aantal studenten per provincie</h1>
+    <h2>Absoluut naar studieniveau</h2>
+    <p>Bron: <a href="http://statline.cbs.nl/">CBS Leerlingen, deelnemers en studenten; onderwijssoort, woonregio</a> (Bewerkt)</p>
+    <div id="chart"></div>
+
+    <hr><br>
+
+    <h1>Aantal studenten per geslacht</h1>
+    <h2>Absoluut naar studieniveau</h2>
+    <p>Bron: <a href="http://statline.cbs.nl/">CBS Leerlingen, deelnemers en studenten; onderwijssoort, woonregio</a> (Bewerkt)</p>
+    <button id="VO1">Voortgezet Onderwijs</button>
+    <button id="MBO1">Middelbaar Beroeps Onderwijs</button>
+    <button id="HBO1">Hoger Beroeps Onderwijs</button>
+    <button id="WO1">Wetenschappelijk Onderwijs</button>
+    <br>
+    
+    <div id="ntal">
+        <div class="poppetje"></div>
+    </div
+>
+</center>
+
+    <script src="lib/d3.js"></script>
+    <script src="lib/c3.js"></script>
+    <script src="js/kaart.js"></script>
+    <script src="js/staaf.js"></script>
+    <script src="js/aantal.js"></script>
+    <script>
+        kaart(); 
+        staaf();
+        aantal();
+    </script>
+</body>
