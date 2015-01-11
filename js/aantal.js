@@ -1,38 +1,69 @@
-function aantal() {
-    var csv = d3.dsv(';');
+function aantal(){   
+    var w = 400;
+    var h = 400;
+    var r = h/2;8
+    var color = d3.scale.category20c();
 
-    function drawAantal(element, data) {
-        var values = d3.entries(data).map(function(d) {
-            return parseFloat(d.value);
-        });
+    var data_VO = [{"label":"Mannen", "value":482938}, 
+                   {"label":"Vrouwen", "value":477740}];
 
-       d3.select(element).selectAll('path').attr('fill', '#000000').attr('stroke', '#000');
+    var data_MBO = [{"label":"Mannen", "value":268146},
+                    {"label":"Vrouwen", "value":242711}];
 
-        for (var geslacht in data) {
-            var value = parseFloat(data[geslacht]);
-            d3.select(element + ' #' + geslacht).attr('opacity', value);
-        }
-    }
+    var data_HBO = [{"label":"Mannen", "value":203585}, 
+                    {"label":"Vrouwen", "value":218108}];
 
-    d3.xhr('data/manvrouw.svg', function(error, response) {
-        var svg = response.responseXML.querySelector('svg').outerHTML;
-        d3.select('#ntal .map').html(svg);
+    var data_WO = [{"label":"Mannen", "value":117129}, 
+                   {"label":"Vrouwen", "value":124242}];
 
-        csv('data/VO_mv.csv', function(err, data) {
-                drawAantal('#ntal', data[0] );
-            });
+    var data = data_VO;
+
+    drawPie();
+    $('#VO1').click(function(){
+        data = data_VO;
+        $('#ntal').html('');
+        drawPie();
     });
 
-    function bindButton(id, file) {
-            d3.select(id).on('click', function() {
-                csv(file, function(err, data) {
-                    drawAantal("#ntal", data[0]);
-                })
-            })
-       }
+     $('#MBO1').click(function(){
+        data = data_MBO;
+        $('#ntal').html('');
+        drawPie();
+    });
 
-       bindButton('#VO1', 'data/VO_mv.csv');
-       bindButton('#MBO1', 'data/MBO_mv.csv');
-       bindButton('#HBO1', 'data/HBO_mv.csv');
-       bindButton('#WO1', 'data/WO_mv.csv');   
+      $('#HBO1').click(function(){
+        data = data_HBO;
+        $('#ntal').html('');
+        drawPie();
+    });
+
+    $('#WO1').click(function(){
+        data = data_WO;
+        $('#ntal').html('');
+        drawPie();
+    });
+
+    function drawPie(){            
+        var vis = d3.select('#ntal').append("svg:svg").data([data]).attr("width", w).attr("height", h).append("svg:g").attr("transform", "translate(" + r + "," + r + ")");
+        var pie = d3.layout.pie().value(function(d){return d.value;});
+
+        var arc = d3.svg.arc().outerRadius(r);
+
+        var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
+        arcs.append("svg:path")
+            .attr("fill", function(d, i){
+                return color(i);
+            })
+            .attr("d", function (d) {
+                return arc(d);
+            });
+
+        arcs.append("svg:text").attr("transform", function(d){
+              d.innerRadius = 0;
+              d.outerRadius = r;
+            return "translate(" + arc.centroid(d) + ")";})
+                .attr("text-anchor", "middle")
+                .attr("fill","#FFF")
+                .text( function(d, i) {return data[i].label + " (" + data[i].value + ")";});
+      }
 }

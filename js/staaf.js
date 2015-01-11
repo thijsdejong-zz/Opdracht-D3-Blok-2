@@ -14,7 +14,8 @@ function staaf(){
                 bindto : '#chart',
                 data : {
                     columns : [ values_MBO, values_HBO, values_WO ],
-                    type : 'bar'
+                    type : 'bar',
+                    
                 },
                 axis : {
                     x : {

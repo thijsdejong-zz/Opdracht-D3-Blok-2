@@ -10,7 +10,9 @@ function kaart() {
 
         for (var gemeente in data) {
             var value = parseFloat(data[gemeente]);
-            d3.select(element + ' #' + gemeente).attr('opacity', value);
+            d3.select(element + ' #' + gemeente)
+              .attr('fill-opacity', value)
+              .attr('stroke-opacity', value);
         }
     }
 

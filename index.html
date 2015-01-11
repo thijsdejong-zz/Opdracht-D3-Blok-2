@@ -3,52 +3,100 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Opdracht D3</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="lib/c3.css">
+    <title>Demografie van het Onderwijs | Eindopdracht D3.js Thijs de Jong</title>
+    <link rel="shortcut icon" href="img/avans.ico">
+    <link rel="stylesheet" type="text/css"href="style.css">
+    <link rel="stylesheet" type="text/css"href="lib/c3.css">
 </head>
 <body>
 <center>
-    <br>
-	<h1>Aantal studenten per gemeente</h1>
-    <h2>Relatief naar populatie</h2>
-    <p>Bron: <a href="http://statline.cbs.nl/">CBS Leerlingen, deelnemers en studenten; onderwijssoort, woonregio</a> (Bewerkt)</p>
 
-	<button id="VO">Voortgezet Onderwijs</button>
-    <button id="MBO">Middelbaar Beroeps Onderwijs</button>
-    <button id="HBO">Hoger Beroeps Onderwijs</button>
-    <button id="WO">Wetenschappelijk Onderwijs</button>
-
-     <div id="kaart">
-        <div class="map"></div>
+    <div class="header">
+        <br><h1>Demografie van het Onderwijs</h1>
+        <p class="header">Eindvisualisatie D3.js Thijs de Jong</p>
     </div>
+    
+    <div class="spacer"></div>
+
+    <div class="content">
+        <br><a name="gemeente"></a>
+    	<h1 class="content">Aantal studenten per gemeente</h1>
+        <h2>Relatief naar populatie</h2>
+        <p>Bron: <a href="http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=71450NED&D1=0&D2=a&D3=0&D4=a&D5=0&D6=6-17,106-109,112,114-115,117-121,124,126-128,132-133,135-137,140-143,145-148,150,153-157,161-171,173-174,176-178,181,183-188,191,193-207,209-211,213-214,216,218,222-225,227-228,230-233,236-241,245-247,249-259,261,263,267-269,271-273,275,277,279,281,284,287-289,291-296,298,300-303,305,308,310-314,316-318,321-325,327-328,330-331,333-337,340-342,344-345,347-348,353,355-359,362-374,376-379,381-385,391-393,395-396,398,400-402,408-410,412-413,416-418,420,423-426,428-429,431-434,436-438,440,442-443,445-446,448,450,452,456-459,461-463,465-467,469-474,476-479,481,483-484,486-497,499-502,506-512,514-515,517-520,522-524,526-527,531,533-538,540,542,544-547,549-553,555,557-560,562-565,568-572,576-580,582-595,598-605,607-611,613-616,619-620,623-627,630,632,634-635,637,639,641-646,649-650,652,654-655,657-658,660-663,666-672,674,677-683,685-687&D7=12&VW=T">CBS Leerlingen, deelnemers en studenten; onderwijssoort, woonregio</a> (Bewerkt)</p>
+
+    	<button id="VO">Voortgezet Onderwijs</button>
+        <button id="MBO">Middelbaar Beroeps Onderwijs</button>
+        <button id="HBO">Hoger Beroeps Onderwijs</button>
+        <button id="WO">Wetenschappelijk Onderwijs</button>
+
+         <div id="kaart">
+            <div class="map"></div>
+        </div>
         
-    <hr><br>
-    
-    <h1>Aantal studenten per provincie</h1>
-    <h2>Absoluut naar studieniveau</h2>
-    <p>Bron: <a href="http://statline.cbs.nl/">CBS Leerlingen, deelnemers en studenten; onderwijssoort, woonregio</a> (Bewerkt)</p>
-    <div id="chart"></div>
+        
+        <div class="opmerking">
+            <center><b>Opmerkingen</b></center>
+            <p>Bovenstaande kaart geeft per gemeente het aantal studenten weer. Hoe donkerder de kleur hoe meer studenten, ten opzichte van de totale populatie, in de gemeente woonachtig zijn. Een aantal opvallende waarden:</p>
+            <ul>
+                <li><b>Terschelling</b> is alléén donker gekleurd bij <b>HBO</b> dit komt doordat de <a href="http://www.nhl.nl/nhl/42/miwb/het-miwb.html">Zeevaartschool</a> zich daar bevind. Dit zijn relatief veel studenten (414) voor de kleine populatie op het Waddeneiland (4795).</li>
+                <li><b>Wageningen</b> is de gemeente met de meeste studenten in het <b>Wetenschappelijk Onderwijs</b> dit komt doordat de <a href="http://www.wageningenur.nl/">Wageningen University and Research Centre</a> daar gehuistvest is als <a href="http://www.vsnu.nl/universiteiten.html">enige Nederlandse universiteit buiten de grote steden.</a></li>
+                <li>Ook is <b>Groningen</b> als een echte universiteitsstad, met maar weinig inwoners duidelijk te zien als <a href="#provincie">trekpleister</a> voor de regio. Met name voor het <b>HBO</b> en <b>WO</b>.</li>
+                <li>Verder zien we in het <b>Voortgezet Onderwijs</b> en het <b>MBO</b> een grote hoeveelheid studenten in <b>Urk</b>, dit komt doordat Urk de gemeente is met het <a href="http://nl.wikipedia.org/wiki/Urk#Demografie">hoogste vruchtbaarheiscijfer</a> van Nederland. Hierdoor heeft Urk ook het hoogste perentage jongeren van Nederland.</li>
+            </ul>
+        </div>
+            
+        <hr><br>
+        <a name="provincie"></a>
+        <h1 class="content">Aantal studenten per provincie</h1>
+        <h2>Absoluut naar studieniveau</h2>
+        <p>Bron: <a href="http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=71450NED&D1=0&D2=a&D3=0&D4=a&D5=0&D6=6-17,106-109,112,114-115,117-121,124,126-128,132-133,135-137,140-143,145-148,150,153-157,161-171,173-174,176-178,181,183-188,191,193-207,209-211,213-214,216,218,222-225,227-228,230-233,236-241,245-247,249-259,261,263,267-269,271-273,275,277,279,281,284,287-289,291-296,298,300-303,305,308,310-314,316-318,321-325,327-328,330-331,333-337,340-342,344-345,347-348,353,355-359,362-374,376-379,381-385,391-393,395-396,398,400-402,408-410,412-413,416-418,420,423-426,428-429,431-434,436-438,440,442-443,445-446,448,450,452,456-459,461-463,465-467,469-474,476-479,481,483-484,486-497,499-502,506-512,514-515,517-520,522-524,526-527,531,533-538,540,542,544-547,549-553,555,557-560,562-565,568-572,576-580,582-595,598-605,607-611,613-616,619-620,623-627,630,632,634-635,637,639,641-646,649-650,652,654-655,657-658,660-663,666-672,674,677-683,685-687&D7=12&VW=T">CBS Leerlingen, deelnemers en studenten; onderwijssoort, woonregio</a> (Bewerkt)</p>
+        <div id="chart"></div><br>
 
-    <hr><br>
+        <div class="opmerking">
+            <center><b>Opmerkingen</b></center>
+            <p>Opvallend in deze grafiek is dat <b>Groningen</b> precies het tegenovergestelde laat zien als de andere provincies. Dit is te verklaren door de <a href="http://nl.wikipedia.org/wiki/Groningen_%28stad%29#Demografische_kenmerken">oververtegenwoordiging van de 20 tot 25-jarigen</a> en een grote vestiging en vertrek in de grootste stad van de provincie: Groningen, dit zijn cijfers die duiden op een hoog aantal studenten dat naar de stad trekt. <br>
+            Dit kennen andere studentensteden als Delft, Nijmegen, Utrecht en Leiden ook, maar doordat Groningen bij de vier minst bevolkte provincies hoort (en de minst bevolkte van de provincies met studentensteden) reflecteert dit zich extra hard op de provinciale cijfers.</p>
+        </div>
 
-    <h1>Aantal studenten per geslacht</h1>
-    <h2>Absoluut naar studieniveau</h2>
-    <p>Bron: <a href="http://statline.cbs.nl/">CBS Leerlingen, deelnemers en studenten; onderwijssoort, woonregio</a> (Bewerkt)</p>
-    <button id="VO1">Voortgezet Onderwijs</button>
-    <button id="MBO1">Middelbaar Beroeps Onderwijs</button>
-    <button id="HBO1">Hoger Beroeps Onderwijs</button>
-    <button id="WO1">Wetenschappelijk Onderwijs</button>
-    <br>
-    
-    <div id="ntal">
-        <div class="poppetje"></div>
-    </div
->
+        <hr><br>
+
+        <a name="geslacht"></a>
+        <h1 class="content">Aantal studenten per geslacht</h1>
+        <h2>Absoluut naar studieniveau</h2>
+        <p>Bron: <a href="http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=71450NED&D1=0&D2=1-2&D3=0&D4=0,7-8,16-17&D5=0&D6=0&D7=12&HDR=T,G2,G4,G1,G6,G5&STB=G3&VW=T">CBS Leerlingen, deelnemers en studenten; onderwijssoort, woonregio</a> (Bewerkt)</p>
+        <button id="VO1">Voortgezet Onderwijs</button>
+        <button id="MBO1">Middelbaar Beroeps Onderwijs</button>
+        <button id="HBO1">Hoger Beroeps Onderwijs</button>
+        <button id="WO1">Wetenschappelijk Onderwijs</button>
+        <br><br>
+        
+        <div id="ntal"></div><br>
+
+        <div class="opmerking">
+            <center><b>Opmerkingen</b></center>
+            <p>Dat er meer <b>vrouwen</b> in het <b>hoger onderwijs</b> studeren is een tendens die in <a href="http://www.nrc.nl/carriere/2013/07/18/hoger-onderwijs-in-europa-het-stikt-van-de-vrouwelijke-studenten/">heel Europa</a> te zien is. Een duidelijke verklaring is hier echter niet voor te vinden. </p>
+        </div>
+        
+        <br>
+
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2014 - 2015 Thijs de Jong | Voor een optimale werking kan het nodig zijn de cache te legen (<a href="https://support.google.com/chrome/answer/95582?hl=nl">Chrome</a> of <a href="https://support.mozilla.org/nl/kb/buffer-van-firefox-wissen">Firefox</a>).<br>
+
+        <a href="mailto:thijs.de.jong@hva.nl"><img src="img/mail.png"></a>
+        <a href="https://github.com/thijsdejong/Opdracht-D3-Blok-2"><img src="img/github.png"></a>
+        <a href="http://nl.linkedin.com/in/dejongthijs/"><img src="img/linkedin.png"></a>
+
+        </p>
+
+    </div>
+
 </center>
 
     <script src="lib/d3.js"></script>
     <script src="lib/c3.js"></script>
+    <script src="lib/jquery.js"></script>
     <script src="js/kaart.js"></script>
     <script src="js/staaf.js"></script>
     <script src="js/aantal.js"></script>

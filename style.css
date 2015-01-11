@@ -24,3 +24,48 @@ a:hover{
 	color:#555;
 	cursor:pointer;
 }
+
+div.opmerking{
+	text-align: left;
+	margin-right: 20%;
+    margin-left: 20%;
+}
+
+div.copyright{
+	font-style: italic;
+	font-size: 85%;
+	text-align: center;
+	width: 100%;
+	background-color: black;
+	color: #8BDDD1;
+	position:absolute;
+	left:0;
+	right:0;
+}
+
+div.header{
+	text-align: center;
+	width: 100%;
+	height: 97px;
+	background-color: black;
+	color: #8BDDD1;
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	position: fixed;
+	z-index: 99;
+}
+
+p.header{
+	color:white !important;
+}
+
+h1.content{
+	font-size: 32px;
+	font-weight: bolder;
+}
+
+div.spacer{
+	height:97px;
+}
